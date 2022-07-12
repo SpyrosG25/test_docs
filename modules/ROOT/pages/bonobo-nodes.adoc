@@ -1,0 +1,5 @@
+= Bonobo Nodes
+
+All bonobo graphs are constructed using bonobo nodes. Each node performs a single normalization or transformation or any kind of computation on a single input record and outputs a single result. In other words, a node doesn`'t work on the entire dataset before passing the result to the next component. So, each node is a python generator which yields a single record when called.
+
+Bonobo has its own execution engine, which is parallel, but due to data interdependencies the project uses its own serial execution engine to run the graphs.

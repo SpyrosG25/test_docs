@@ -1,0 +1,7 @@
+= Bonobo Services
+
+The project makes heavy usage of a type of dependency injection named "`services`". These refer to callable code and python objects, which are registered/created upon initialization and are subsequently shared by all objects in the pipeline. They represent values in a dictionary.
+
+For example, all files under data/common/ correspond to a service with the same name in the runtime.
+
+See people.py for examples.
