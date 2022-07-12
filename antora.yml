@@ -2,5 +2,11 @@ name: test-app
 title: Test App
 version: docs
 prerelease: -beta
+start_page: ROOT:bonobo-nodes.adoc
+asciidoc:
+  attributes:
+    source-language: asciidoc@
+    table-caption: false
+
 nav:
 - modules/ROOT/nav.adoc
