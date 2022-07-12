@@ -13,11 +13,11 @@ jobs:
       with:
         node-version: '16'
     - name: Install Antora
-      run: npm i antora
+      run:  npm i -g @antora/cli@3.0 @antora/site-generator@3.0
     - name: Generate Site
       run: npx antora antora-playbook.yml
     - name: Publish to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: build/site/test-app/docs
+        publish_dir: build/site
