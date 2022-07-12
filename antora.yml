@@ -1,0 +1,6 @@
+name: test-app
+title: Test App
+version: docs
+prerelease: -beta
+nav:
+- modules/ROOT/nav.adoc
