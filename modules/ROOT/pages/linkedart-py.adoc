@@ -1,0 +1,9 @@
+= linkedart.py
+
+This file is responsible for mapping python objects/properties to CIDOC-CRM.
+
+..... MakeLinkedArtPerson
+..... MakeLinkedArtPlace
+..... [red]#Questions# : 
+    .... What is the type of the inputted data?
+        . python dict
