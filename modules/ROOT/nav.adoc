@@ -1,1 +1,3 @@
 * xref:index.adoc[]
+* xref:bonobo-nodes.adoc[]
+* xref:bonobo-services.adoc[]
