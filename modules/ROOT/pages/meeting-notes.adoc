@@ -30,7 +30,8 @@
 * Group_repeating
 * Prefixes -> same number , same entry
 * Nest flat dictionary
-* Serializer node
+* Serializer node +
++
 image::placedata.png[]
 * Model parent (crm_vocab.tsv ok to use)
 * Vocab.register_instance (classified_as) (instance unique no ident)

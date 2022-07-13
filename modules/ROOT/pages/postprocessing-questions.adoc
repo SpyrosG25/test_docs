@@ -59,6 +59,7 @@ Make targets invoke scripts which handle the post-processing:
 }
 
 /*/\\__init__.py : +
+
 image::salebuyer.png[]
 
 pipeline/util/\\__init__.py : +
