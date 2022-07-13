@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bonobo Services :: Antora Demo Site</title>
-    <link rel="prev" href="bonobo-nodes.html">
-    <link rel="next" href="linkedart-py.html">
+    <title>test_people_issue_53.py : exception and logic breakdown :: Antora Demo Site</title>
+    <link rel="prev" href="people-py.html">
+    <link rel="next" href="knoedler-py.html">
     <meta name="generator" content="Antora 3.0.2">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -65,7 +65,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-nodes.html">Bonobo Nodes</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-services.html">Bonobo Services</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -74,7 +74,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="people-py.html">people.py</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="test-people-issue.html">test_people_issue_53.py : exception and logic breakdown</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -111,7 +111,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Test App</a></li>
-    <li><a href="bonobo-services.html">Bonobo Services</a></li>
+    <li><a href="test-people-issue.html">test_people_issue_53.py : exception and logic breakdown</a></li>
   </ul>
 </nav>
 </div>
@@ -120,19 +120,22 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Bonobo Services</h1>
+<h1 class="page">test_people_issue_53.py : exception and logic breakdown</h1>
 <div class="paragraph">
-<p>The project makes heavy usage of a type of dependency injection named &#8220;services&#8221;. These refer to callable code and python objects, which are registered/created upon initialization and are subsequently shared by all objects in the pipeline. They represent values in a dictionary.</p>
+<p>When started the file tests/data/people/ar53/people_authority.csv and its first row is loaded. These values are saved into a dict whose keys are the header values of tests/data/people_authority_0.csv. There is one-to-one correspondence between these files.</p>
 </div>
 <div class="paragraph">
-<p>For example, all files under data/common/ correspond to a service with the same name in the runtime.</p>
+<p>Then the values under `person` are extracted and a copy is saved under key `parent_data`. Since this happens early on in the node, before any process has been performed, I assume these will be used as reference.</p>
 </div>
 <div class="paragraph">
-<p>See people.py for examples.</p>
+<p>The main logic is performed by the <em>AddPerson</em> configurable, which parses the values in the dict and for each key maps it to CRM using the cromulent package.</p>
+</div>
+<div class="paragraph">
+<p>The only cromulent objects that were accessed during the run are in the end serialized to json-lds.</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="bonobo-nodes.html">Bonobo Nodes</a></span>
-  <span class="next"><a href="linkedart-py.html">linkedart.py</a></span>
+  <span class="prev"><a href="people-py.html">people.py</a></span>
+  <span class="next"><a href="knoedler-py.html">knoedler.py</a></span>
 </nav>
 </article>
   </div>

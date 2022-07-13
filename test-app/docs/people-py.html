@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bonobo Services :: Antora Demo Site</title>
-    <link rel="prev" href="bonobo-nodes.html">
-    <link rel="next" href="linkedart-py.html">
+    <title>people.py :: Antora Demo Site</title>
+    <link rel="prev" href="linkedart-py.html">
+    <link rel="next" href="test-people-issue.html">
     <meta name="generator" content="Antora 3.0.2">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -65,13 +65,13 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-nodes.html">Bonobo Nodes</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-services.html">Bonobo Services</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="linkedart-py.html">linkedart.py</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="people-py.html">people.py</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -111,7 +111,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Test App</a></li>
-    <li><a href="bonobo-services.html">Bonobo Services</a></li>
+    <li><a href="people-py.html">people.py</a></li>
   </ul>
 </nav>
 </div>
@@ -120,19 +120,128 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Bonobo Services</h1>
+<h1 class="page">people.py</h1>
 <div class="paragraph">
-<p>The project makes heavy usage of a type of dependency injection named &#8220;services&#8221;. These refer to callable code and python objects, which are registered/created upon initialization and are subsequently shared by all objects in the pipeline. They represent values in a dictionary.</p>
+<p>Creates the Bonobo pipeline for transforming people data from CSV to JSON-LD.</p>
+</div>
+<div class="olist upperroman">
+<ol class="upperroman" type="I">
+<li>
+<p>services :</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>MakeLinkedArtPerson</p>
+</li>
+<li>
+<p>people_groups</p>
+</li>
+<li>
+<p>trace_counter</p>
+</li>
+<li>
+<p>fs.data.people</p>
+</li>
+<li>
+<p>currencies : a dict like { '£' : 'gb pounds', 'livres' : 'fr livres' }</p>
+</li>
+<li>
+<p>materials_map : a dict of frozensets like the following</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">('Painting', frozenset(\{''})) : {
+    'classified_as (object type) (primary)': '300033618',
+    'classified_as (object type) (secondary)': '', 'editorial
+notes': '',
+    'made_of (primary)': '',
+    'made_of (support)': '',
+    'materials': '',
+    'n': '548703',
+    'object_type': 'Painting',
+    'technique': '300054216'
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>For example, all files under data/common/ correspond to a service with the same name in the runtime.</p>
+<p>Data come from the data/common/materials_map.csv</p>
 </div>
-<div class="paragraph">
-<p>See people.py for examples.</p>
+</li>
+<li>
+<p>Unique_locations : a dict of dicts with places and their canonical names. Data come from data/common/unique_locations.json</p>
+</li>
+<li>
+<p>vocab_instance_map and vocab_type_map : see the files under data/common with the same name.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><span class="red">graph</span> :</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>MatchingFiles : get all files matching a specific pattern</p>
+</li>
+<li>
+<p>CurriedCSVReader : line by line reader of the csv files.</p>
+</li>
+<li>
+<p>KeyManagement : for each column of the csv files provided, run process the values. (remove,rename, group values etc)</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>currently this step is skipped (pass-ed)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>ExtractKeyedValue : make a copy of the original dict</p>
+</li>
+<li>
+<p>AddPerson : all sorts of normalization/transformation functionality that a single record may need</p>
+</li>
+<li>
+<p>add_person_or_group_chain : adds serialization nodes</p>
+</li>
+<li>
+<p>add_places_chain : adds serialization nodes</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><span class="red">Questions</span> :</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>What are static instances and why are they used?</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>All the cromulent objects accessed by the workflow.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Why are static instances serialized after the people graph has concluded?</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In order to serialize only those accessed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="bonobo-nodes.html">Bonobo Nodes</a></span>
-  <span class="next"><a href="linkedart-py.html">linkedart.py</a></span>
+  <span class="prev"><a href="linkedart-py.html">linkedart.py</a></span>
+  <span class="next"><a href="test-people-issue.html">test_people_issue_53.py : exception and logic breakdown</a></span>
 </nav>
 </article>
   </div>
