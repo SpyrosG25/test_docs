@@ -1,0 +1,41 @@
+= Meeting notes:
+
+* Components pipeline/\\__init__.py
+* GraphExecutor
+* There is not a single place where data is cleaned before entering the pipeline
+    ** Bits of code that perform some cleaning can be found here and there.
+* Class helpers:
+    ** If nodes/projects share a common functionality e.g make_la_person then this can most likely be moved into a helper function and be injected into the class.
+    ** So the same functionality needs to be shared but there is not parent/child relation between the components.
+* KeyManagement:
+    ** The process goes like this :
+        *** A csv row gets translated to a json entry
+        *** Name,location,age
+        *** John,heraklion,27
++
+[disc]
+            **** Is translated to:
++
+*** {
++
+[disc]
+        **** Name: John
+        **** Location: Heraklion
+        **** age: 27
++
+*** }
+** Key Management allows as to reconstruct the above dict to some more useful in the pipeline (merge entries to array and stuff)
+* Thread per node
+* 1,2,3 run sequentially
+* Group_repeating
+* Prefixes -> same number , same entry
+* Nest flat dictionary
+* Serializer node
+image:placedata.png[]
+* Model parent (crm_vocab.tsv ok to use)
+* Vocab.register_instance (classified_as) (instance unique no ident)
+    ** For classification and things that
+* Top level objects (no merge, problem id)
+* Chain of uris
+* JsonValueWriter
+    ** rewrite

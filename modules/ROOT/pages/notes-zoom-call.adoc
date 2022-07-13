@@ -1,0 +1,114 @@
+= Notes from Zoom Call with the main developer Greg Williams 28/04/2022
+
+Order of projects' complexity: +
+People < Knoedler < Sales 
+
+..... [red]#sales# :
+    .... Consists of 3 datasets
+        . Sales descriptions: dictionary with info on auctions
+            .. Non-auctions and event-properties boxes in sales-pipeline.pdf represent objects in memory that are shared between the datasets
+        . Physical copies of auction catalogs
+        . Individual auction lots, objects themselves
+            .. Auction lot : offering a lot in an auction event
++
+[decimal]
+... Can contain more than one object
++
+.... Post-processing node does reconciliation with a unique uri in the json-ld. Multiple objects can be identified as being the same that way.
+.... Bidding node has changed significantly.
+.... Buy_auth_mod :
+    . for/through identifiers : for goes with through, through means an agent is involved
+.... Keys in csv are keys in the jsons which are loaded as bonobo services
++
+..... [red]#Develop Process#
+    .... Run the pipeline for just one row and inspect the result
+    .... See how this is modeled
+    .... Identify the changes that should be made.
+        . If a new type has to be added (as was the case with buyer agent and seller agent) go to \\__init__ of the project and add the type to using the vocab library.
+
+*QUESTION ON AR-115*
+
+https://advancesvs.slack.com/team/U02AMBZ79DZ[@Yannis Probonas] the question about AR-115 is a good one.
+
+If you\'ve looked into how some of the serializers work in the etl code, you may have seen things like [.small.red]#MergingMemoryWriter# and [.small.red]#MergingFileWriter# which can merge a crom object with an existing serialized object.
+
+The way that happens is with the [.small.red]#pipeline.util.CromObjectMerger# class. This class just tries to take a crom object and merge it with one or more other crom objects. It uses crom\'s APIs to get a list of properties for each object, and tries to recursively merge things together.
+
+The easiest case for merging is when two things have the same [.small.red]#id# value. In that case, it\'s obvious that they are talking about the same object, and that their properties should just be merged together.
+
+So if you had two objects and you were trying to merge them:
+
+----
+a = {
+        "referred_to_by":[
+            {
+                "id":"http://reference-1/",
+                "type":"LinguisticObject",
+                "content":"something"
+            }
+        ]
+}
+
+b = {
+        "referred_to_by":[
+            {
+                "id":"http://reference-1/",
+                "type":"LinguisticObject",
+                "_label": "some label"
+            }
+        ]
+}
+----
+
+You\'d be able to tell that this should result in a single [.small.red]#referred_to_by# LinguisticObject that had both a [.small.red]#content# and [.small.red]#a _label# value.
+
+Without the id values, it would be impossible to know that and you\'d end up with one object that had two referred_to_by values. (There are some tricks in the code that go beyond just the id value, but for the purpose of explanation here, let\'s assume they don\'t matter.) [.small]#(edited)#
+
+So AR-115 was indicating that the resulting provenance activity JSON-LD file had two Acquisitions (transfer of title) with the same information (the buyer "`Waepenaert, P.J. De`" was showing up in two otherwise identical Acquisition parts).
+
+This would probably be pretty tricky to track down without any context. Repeated values like this suggested to me that it was probably a problem in the merging, though. And the solution to that is to add [.small.red]#id# values for the Acquisitions so that it\'s obvious to the merging code when its looking at the same Acquisitions.
+
+This is good because it\'s a relatively simple fix, and because it has zero semantic impact on the JSON-LD files as far as Arches is concerned. Only the [.small.red]#id# at the top-level of the JSON file is relevant for Arches, and so we can add whatever values we want to sub-objects and it won\'t have any impact.
+
+(One final addition to the comment at the beginning about the Merging writers. Those are the places where this gets called during the ETL, but it can also happen during the post processing. The primary place to look for that is any code that calls [.small.red]#pipeline.util.rewriting.rewrite_output_files#, which several of the files in [.small.red]#scripts/# do.)
+
+I hope that helps explain what was going on with AR-115. Let me know if it\'s still unclear or if you have other questions about this and I can provide deeper explanations or answer questions about specific parts of the process.
+
+*QUESTION on AR-132*
+
+https://advancesvs.slack.com/team/U02A0TNVDKR[@Greg Williams]  I'm working on knoedler for transactions of type Unsold. If there are sellers then it's not an inventorying event (https://github.com/thegetty/pipeline/blob/cccfd0a9d6077e6bf0b79a92a03264f34e7ce5a7/pipeline/projects/knoedler/\\__init__.py#L1363) and it\'s handled like a UnsoldPurchase. Could you give me some insight on UnsoldPurchase? Should I treat it like an Purchase event? Or since it is not an Inventorying event,  ignore this case for the time being?
+
+https://github.com/thegetty/pipeline/blob/cccfd0a9d6077e6bf0b79a92a03264f34e7ce5a7/pipeline/projects/knoedler/\\__init__.py[\\__int__.py]
+
+ # if there are sellers in this record (and it is "Unsold" by design of the caller),
+
+https://app.slack.com/team/U02A0TNVDKR[Greg Williams 9 days ago] Knoedler has an interesting structure in this case for two reasons. + 
+
+. Each input record is potentially two different prov entries - one for Knoedler\'s purchase of the object; and one for Knoedler later selling the same object
+. Entries can also represent inventorying where there is no sale on either side of the transaction but it appears for book-keeping reasons. +
+
+
+Unsold records can be either of these cases. For 1, we model the purchase (but no subsequent sale). For 2, it\'s an inventorying event (with no sales). The way we identify 2 is that it\'s both "`unsold`" and doesn\'t have any information about somebody selling it to Knoedler (so we assume there was some previous entry where it was unsold and there were seller details).
+
+So UnsoldPurchase covers case 1. We model Knoedler’s purchase, but no subsequent sale.
+
+(And only when there is some seller listed in the record.)
+
+https://app.slack.com/team/U02AMBZ79DZ[Yannis Probonas  9 days ago
+] +
+I see, so from the etl point of view an knoedler purchase will not have a node with type inventorying. Is this correct? If one wanted to add info on the inventorying of purchased record, he should add another input record ? [.small]#(edited)# 
+
+https://app.slack.com/team/U02A0TNVDKR[Greg Williams  9 days ago
+] +
+Right. The purchase isn\'t an inventorying event. Inventorying happens at some point in the future, if at all.
+
+We see inventorying when there is a row added to the Knoedler stock book without any seller details. (They\'ve carried over some previous entry into a new one as part of inventorying.)
+
+https://github.com/thegetty/pipeline/blob/master/pipeline/projects/knoedler/\\__init__.py#L770
+
+https://github.com/thegetty/pipeline/blob/master/pipeline/projects/knoedler/\\__init__.py#L770[pipeline/\\__init__.py at master · thegetty/pipeline] +
+Data pipeline work. Contribute to thegetty/pipeline development by creating an account on GitHub. (46 kB)
+
+https://github.com/thegetty/pipeline/blob/master/pipeline/projects/knoedler/\\__init__.py#L770
+
+That code shows the modeling. If you find where it\'s called, there\'s actually a second case of inventorying, and that\'s when we have a sold record with no original seller details. This happens when there is an inventorying event (where Knoedler carries over details into a new stock book entry), partially filling out the details. And then later the object is bought and they complete the entry and enter the buyer details. For those records, we also model the inventorying as the "`incoming`" event in place of a sale to Knoedler (since the sale to Knoedler is in some previous record).

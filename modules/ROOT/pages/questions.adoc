@@ -1,0 +1,13 @@
+= Questions:
+
+* Sales
+* Knoedler
+    ** \\__init__.py
+* Aat
+* General
+    ** Merging of data
+    ** MakeLinkedArt* (linkedart.py)
+    ** Good practices ? 
+
+image:classes.png[]
+image:initpy.png[]
