@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bonobo Services :: Antora Demo Site</title>
-    <link rel="prev" href="bonobo-nodes.html">
-    <link rel="next" href="linkedart-py.html">
+    <title>Meeting notes: :: Antora Demo Site</title>
+    <link rel="prev" href="questions.html">
+    <link rel="next" href="postprocessing-questions.html">
     <meta name="generator" content="Antora 3.0.2">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -65,7 +65,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-nodes.html">Bonobo Nodes</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-services.html">Bonobo Services</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -89,7 +89,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="questions.html">Questions:</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="meeting-notes.html">Meeting notes:</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -126,7 +126,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Test App</a></li>
-    <li><a href="bonobo-services.html">Bonobo Services</a></li>
+    <li><a href="meeting-notes.html">Meeting notes:</a></li>
   </ul>
 </nav>
 </div>
@@ -135,19 +135,143 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Bonobo Services</h1>
-<div class="paragraph">
-<p>The project makes heavy usage of a type of dependency injection named &#8220;services&#8221;. These refer to callable code and python objects, which are registered/created upon initialization and are subsequently shared by all objects in the pipeline. They represent values in a dictionary.</p>
+<h1 class="page">Meeting notes:</h1>
+<div class="ulist">
+<ul>
+<li>
+<p>Components pipeline/__init__.py</p>
+</li>
+<li>
+<p>GraphExecutor</p>
+</li>
+<li>
+<p>There is not a single place where data is cleaned before entering the pipeline</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bits of code that perform some cleaning can be found here and there.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>For example, all files under data/common/ correspond to a service with the same name in the runtime.</p>
+</li>
+<li>
+<p>Class helpers:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If nodes/projects share a common functionality e.g make_la_person then this can most likely be moved into a helper function and be injected into the class.</p>
+</li>
+<li>
+<p>So the same functionality needs to be shared but there is not parent/child relation between the components.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>See people.py for examples.</p>
+</li>
+<li>
+<p>KeyManagement:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The process goes like this :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A csv row gets translated to a json entry</p>
+</li>
+<li>
+<p>Name,location,age</p>
+</li>
+<li>
+<p>John,heraklion,27</p>
+<div class="ulist disc">
+<ul class="disc">
+<li>
+<p>Is translated to:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>{</p>
+<div class="ulist disc">
+<ul class="disc">
+<li>
+<p>Name: John</p>
+</li>
+<li>
+<p>Location: Heraklion</p>
+</li>
+<li>
+<p>age: 27</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>}</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Key Management allows as to reconstruct the above dict to some more useful in the pipeline (merge entries to array and stuff)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Thread per node</p>
+</li>
+<li>
+<p>1,2,3 run sequentially</p>
+</li>
+<li>
+<p>Group_repeating</p>
+</li>
+<li>
+<p>Prefixes &#8594; same number , same entry</p>
+</li>
+<li>
+<p>Nest flat dictionary</p>
+</li>
+<li>
+<p>Serializer node
+<span class="image unresolved"><img src="placedata.png" alt="placedata"></span></p>
+</li>
+<li>
+<p>Model parent (crm_vocab.tsv ok to use)</p>
+</li>
+<li>
+<p>Vocab.register_instance (classified_as) (instance unique no ident)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For classification and things that</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Top level objects (no merge, problem id)</p>
+</li>
+<li>
+<p>Chain of uris</p>
+</li>
+<li>
+<p>JsonValueWriter</p>
+<div class="ulist">
+<ul>
+<li>
+<p>rewrite</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="bonobo-nodes.html">Bonobo Nodes</a></span>
-  <span class="next"><a href="linkedart-py.html">linkedart.py</a></span>
+  <span class="prev"><a href="questions.html">Questions:</a></span>
+  <span class="next"><a href="postprocessing-questions.html">Postprocessing questions:</a></span>
 </nav>
 </article>
   </div>

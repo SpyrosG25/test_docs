@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bonobo Services :: Antora Demo Site</title>
-    <link rel="prev" href="bonobo-nodes.html">
-    <link rel="next" href="linkedart-py.html">
+    <title>Notes: :: Antora Demo Site</title>
+    <link rel="prev" href="notes-zoom-call.html">
+    <link rel="next" href="questions.html">
     <meta name="generator" content="Antora 3.0.2">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script>var uiRootPath = '../../_'</script>
@@ -65,7 +65,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-nodes.html">Bonobo Nodes</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="bonobo-services.html">Bonobo Services</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -83,7 +83,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="notes-zoom-call.html">Notes from Zoom Call with the main developer Greg Williams 28/04/2022</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="notes.html">Notes:</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -126,7 +126,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Test App</a></li>
-    <li><a href="bonobo-services.html">Bonobo Services</a></li>
+    <li><a href="notes.html">Notes:</a></li>
   </ul>
 </nav>
 </div>
@@ -135,19 +135,117 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Bonobo Services</h1>
-<div class="paragraph">
-<p>The project makes heavy usage of a type of dependency injection named &#8220;services&#8221;. These refer to callable code and python objects, which are registered/created upon initialization and are subsequently shared by all objects in the pipeline. They represent values in a dictionary.</p>
+<h1 class="page">Notes:</h1>
+<div class="ulist">
+<ul>
+<li>
+<p>Anything callable can be added in a bonobo chain as argument (nodes).</p>
+</li>
+<li>
+<p>__init__.py includes initialization of graph (for each event there is a chain that is put in the bonobo graph)</p>
+</li>
+<li>
+<p>UtilityHelper is in __init__.py</p>
+</li>
+<li>
+<p>_LOD_OBJECT</p>
+</li>
+<li>
+<p><strong>_CROM_FACTORY</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="small">get_crom_object</span></p>
+</li>
+<li>
+<p><span class="small">Add_crom_data</span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><span class="small">self.helper.make_proj_uri</span></p>
+</li>
+<li>
+<p>And helpers in general</p>
+</li>
+<li>
+<p><span class="small">vocab.register_instance</span></p>
+</li>
+<li>
+<p><span class="small">vocab.register_vocab_class</span></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>How to tell if an instance or a class is missing from crom?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Cromulent has some flags like</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>okay to use?</p>
+</li>
+<li>
+<p>okay for multiple?</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>For example, all files under data/common/ correspond to a service with the same name in the runtime.</p>
+<p>What do those services do? (linkedart.py)</p>
 </div>
-<div class="paragraph">
-<p>See people.py for examples.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">'make_la_person': MakeLinkedArtPerson(),
+'make_la_lo': MakeLinkedArtLinguisticObject(),
+'make_la_hmo': MakeLinkedArtHumanMadeObject(),
+'make_la_org': MakeLinkedArtOrganization(),</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cromulent</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>CromObjectMerger</strong></p>
+</li>
+<li>
+<p>Scenario:<br>
+<span class="image unresolved"><img src="unnamed.png" alt="unnamed"></span></p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="small">Duplicate record</span></p>
+</li>
+<li>
+<p><span class="small">One different attribute</span></p>
+</li>
+<li>
+<p><span class="small">It merges the two records and adds the attribute</span></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="bonobo-nodes.html">Bonobo Nodes</a></span>
-  <span class="next"><a href="linkedart-py.html">linkedart.py</a></span>
+  <span class="prev"><a href="notes-zoom-call.html">Notes from Zoom Call with the main developer Greg Williams 28/04/2022</a></span>
+  <span class="next"><a href="questions.html">Questions:</a></span>
 </nav>
 </article>
   </div>

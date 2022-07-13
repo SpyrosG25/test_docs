@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Postprocessing questions: :: Antora Demo Site</title>
+    <link rel="prev" href="meeting-notes.html">
+    <meta name="generator" content="Antora 3.0.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://spyrosg25.github.io/test_docs">Antora Demo Site</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="test-app" data-version="docs">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Test App</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Test App</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="bonobo-nodes.html">Bonobo Nodes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="bonobo-services.html">Bonobo Services</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="linkedart-py.html">linkedart.py</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="people-py.html">people.py</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="test-people-issue.html">test_people_issue_53.py : exception and logic breakdown</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="knoedler-py.html">knoedler.py</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="notes-zoom-call.html">Notes from Zoom Call with the main developer Greg Williams 28/04/2022</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="notes.html">Notes:</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="questions.html">Questions:</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="meeting-notes.html">Meeting notes:</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="postprocessing-questions.html">Postprocessing questions:</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Test App</span>
+    <span class="version">docs-beta</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">Test App</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">docs-beta</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Test App</a></li>
+    <li><a href="postprocessing-questions.html">Postprocessing questions:</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Postprocessing questions:</h1>
+<div class="paragraph">
+<p>Make targets invoke scripts which handle the post-processing:</p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p><strong>sales</strong></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p><strong>- salesdata</strong></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p><strong>- salespipeline</strong></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>- sales.py<br>
+# writes post_sale_rewrite_map.json</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>salespostprocessing</strong></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p><strong>salespostsalerewrite</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>salespostsalefilelist</strong></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>scripts/find_matching_json_files</strong><br>
+# finds any JSON files containing URIs in post_sale_rewrite_map.json and collects matching filenames in post-sale-matching-files.txt</p>
+</li>
+<li>
+<p><strong>scripts/rewrite_post_sales_uris.py</strong><br>
+# for every file in post-sale-matching-files.txt, canonicalizes URIs with<br>
+<span class="red">post_sale_rewrite_map.json</span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>postprocessing_rewrite_uris</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>scripts/rewrite_uris_to_uuids_parallel.py</strong><br>
+# replace URIs that start with 'tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:' with UUID URIs</p>
+</li>
+<li>
+<p><strong>scripts/coalesce_json.py</strong><br>
+# renames files based on their top-level .id value, merging when necessary (this can occur because of the <strong>post-sale URI canonicalization</strong>)</p>
+</li>
+<li>
+<p><strong>scripts/remove_meaningless_ids.py</strong><br>
+# this is probably not needed anymore, but removes non-top-level .id values from JSON files for certain paths</p>
+</li>
+<li>
+<p><strong>scripts/reorganize_json.py</strong><br>
+# Move JSON wherever necessary to ensure all files are located in the appropriate output sub-folders</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>post_sale_rewrite_map.json</strong> looks like:</p>
+</div>
+<div class="paragraph">
+<p>{<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0002,1806-07-28":<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0100,1803-05-11",<br></p>
+</div>
+<div class="paragraph">
+<p>"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0008,1806-07-28":<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-41,0001,1802-07-26",<br></p>
+</div>
+<div class="paragraph">
+<p>"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0015,1806-07-28":<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0060,1803-05-11",<br></p>
+</div>
+<div class="paragraph">
+<p>"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0035,1806-07-28":<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0068,1803-05-11",<br></p>
+</div>
+<div class="paragraph">
+<p>"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0043,1806-07-28":<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,Br-57,0026,1801-07-23",<br></p>
+</div>
+<div class="paragraph">
+<p>"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0045,1806-07-28":<br>
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-300,0001,1818-07-15"<br>
+}</p>
+</div>
+<div class="paragraph">
+<p>/*/__init__.py :<br>
+<span class="image unresolved"><img src="salebuyer.png" alt="salebuyer"></span></p>
+</div>
+<div class="paragraph">
+<p>pipeline/util/__init__.py :<br>
+list of functions for post processing</p>
+</div>
+<div class="paragraph">
+<p>Results:<br>
+Pipeline.counters</p>
+</div>
+<div class="paragraph">
+<p>rewriting and coalesce_json both use <strong>CromObjectMerger</strong><br></p>
+</div>
+<div class="ulist disc">
+<ul class="disc">
+<li>
+<p>GEORGE BRUSEKER</p>
+</li>
+<li>
+<p>Load to dev<br>
+<em>ah gotcha</em><br>
+<em>so they have set it up in a weird way</em><br>
+<em>once you are logged in</em><br>
+<em>and assuming you have rights</em><br>
+<em>then</em><br>
+<em>my typical process</em><br>
+<em>is to move the zip packages created to test the tickets from my computer</em><br>
+<em>to the dev</em><br>
+<em>into this folder:</em><br>
+<em>/arches/arches_provenance/data</em><br>
+<em>there you will find all the files that have been created to test tickets already</em><br>
+<em>keeping them in one spot makes it easy to rerun them</em><br>
+<em>Then I ssh into the server</em><br>
+<em>I move to the arches provenance directory ( I realize this is unecessary, but I like habits)</em><br>
+<em>/arches/arches_provenance</em><br>
+<em>and then all the usual commands can be used</em><br>
+<em>but they have to be run like this:</em><br>
+<em>/usr/bin/arches load_jsonld</em><br>
+<em>where 'load_jsonld' is replaced with your desired arches command</em><br>
+<em>typically the only thing I do in the server is load the data from the zips using that command</em><br>
+<em>and sometimes delete the instances from a model or models</em></p>
+</li>
+</ul>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="meeting-notes.html">Meeting notes:</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
