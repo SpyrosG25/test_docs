@@ -1,0 +1,38 @@
+= knoedler.py
+
+https://en.wikipedia.org/wiki/Knoedler[M. Knoedler & Co. was an art dealership in New York City.]
+
+When running this pipeline you will see that provenance records contain ownership transfer to and from M. Knoedler & Co. These correspond to sales and purchases of the art dealership. E.g
+
+[.underline]#*A_purchase*# +
+----
+"transferred_title_from": [
+    	{    "id":"tag:getty.edu,2019:digital:pipeline:uuid:shared#PERSON,AUTH,Byers%2C%20Alexander%20McBurney",
+"type": "Person",
+"_label": "Byers, Alexander McBurney"
+    	}
+],
+"transferred_title_to": [
+    	{
+"id":"tag:getty.edu,2019:digital:pipeline:uuid:shared#ORGANIZATION,ULAN,500304270",
+"type": "Group",
+"_label": "M. Knoedler & Co."
+    	}
+]
+----
+[.underline]#*A_sale_to*# +
+----
+"transferred_title_from": [
+    	{    "id":"tag:getty.edu,2019:digital:pipeline:uuid:shared#ORGANIZATION,ULAN,500304270",
+"type": "Group",
+"_label": "M. Knoedler & Co."
+    	}
+],
+"transferred_title_to": [
+    	{
+"id":"tag:getty.edu,2019:digital:pipeline:uuid:shared#PERSON,AUTH,Bleiman%2C%20Max",
+"type": "Person",
+"_label": "Bleiman, Max"
+    	}
+]
+----

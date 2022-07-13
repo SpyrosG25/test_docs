@@ -1,0 +1,9 @@
+= test_people_issue_53.py : exception and logic breakdown
+
+When started the file tests/data/people/ar53/people_authority.csv and its first row is loaded. These values are saved into a dict whose keys are the header values of tests/data/people_authority_0.csv. There is one-to-one correspondence between these files.
+
+Then the values under \`person` are extracted and a copy is saved under key \`parent_data`. Since this happens early on in the node, before any process has been performed, I assume these will be used as reference. 
+
+The main logic is performed by the _AddPerson_ configurable, which parses the values in the dict and for each key maps it to CRM using the cromulent package.
+
+The only cromulent objects that were accessed during the run are in the end serialized to json-lds.

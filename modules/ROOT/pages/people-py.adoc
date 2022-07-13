@@ -1,0 +1,42 @@
+= people.py
+
+Creates the Bonobo pipeline for transforming people data from CSV to JSON-LD.
+
+..... services :
+    .... MakeLinkedArtPerson
+    .... people_groups
+    .... trace_counter
+    .... fs.data.people
+    .... currencies : a dict like { '£' : 'gb pounds', 'livres' : 'fr livres' }
+    .... materials_map : a dict of frozensets like the following
++
+----
+('Painting', frozenset(\{''})) : { 
+    'classified_as (object type) (primary)': '300033618', 
+    'classified_as (object type) (secondary)': '', 'editorial 
+notes': '', 
+    'made_of (primary)': '', 
+    'made_of (support)': '', 
+    'materials': '', 
+    'n': '548703', 
+    'object_type': 'Painting', 
+    'technique': '300054216' 
+} 
+----
+Data come from the data/common/materials_map.csv
+    .... Unique_locations : a dict of dicts with places and their canonical names. Data come from data/common/unique_locations.json
+    .... vocab_instance_map and vocab_type_map : see the files under data/common with the same name.
+..... [red]#graph# :
+    .... MatchingFiles : get all files matching a specific pattern
+    .... CurriedCSVReader : line by line reader of the csv files.
+    .... KeyManagement : for each column of the csv files provided, run process the values. (remove,rename, group values etc)
+        . currently this step is skipped (pass-ed)
+    .... ExtractKeyedValue : make a copy of the original dict
+    .... AddPerson : all sorts of normalization/transformation functionality that a single record may need
+    .... add_person_or_group_chain : adds serialization nodes
+    .... add_places_chain : adds serialization nodes
+..... [red]#Questions# : 
+    .... What are static instances and why are they used?
+        . All the cromulent objects accessed by the workflow.
+    .... Why are static instances serialized after the people graph has concluded?
+        . In order to serialize only those accessed.
