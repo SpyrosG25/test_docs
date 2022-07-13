@@ -37,7 +37,7 @@ The way that happens is with the [.small.red]#pipeline.util.CromObjectMerger# cl
 The easiest case for merging is when two things have the same [.small.red]#id# value. In that case, it\'s obvious that they are talking about the same object, and that their properties should just be merged together.
 
 So if you had two objects and you were trying to merge them:
-
+[source,python]
 ----
 a = {
         "referred_to_by":[

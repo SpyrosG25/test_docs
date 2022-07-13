@@ -38,26 +38,28 @@ Make targets invoke scripts which handle the post-processing:
 
 *post_sale_rewrite_map.json* looks like:
 
-{ +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0002,1806-07-28": +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0100,1803-05-11", +
+[sourcre,json]
+----
+{ 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0002,1806-07-28": 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0100,1803-05-11", 
 
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0008,1806-07-28": +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-41,0001,1802-07-26", +
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0008,1806-07-28": 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-41,0001,1802-07-26", 
 
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0015,1806-07-28": +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0060,1803-05-11", +
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0015,1806-07-28": 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0060,1803-05-11", 
 
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0035,1806-07-28": +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0068,1803-05-11", +
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0035,1806-07-28": 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,F-55,0068,1803-05-11", 
 
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0043,1806-07-28": +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,Br-57,0026,1801-07-23", +
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0043,1806-07-28": 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,Br-57,0026,1801-07-23", 
 
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0045,1806-07-28": +
-"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-300,0001,1818-07-15" +
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-116,0045,1806-07-28": 
+"tag:getty.edu,2019:digital:pipeline:REPLACE-WITH-UUID:sales#OBJ,B-300,0001,1818-07-15" 
 }
-
+----
 /*/\\__init__.py : +
 
 image::salebuyer.png[]

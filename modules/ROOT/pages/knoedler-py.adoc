@@ -5,6 +5,7 @@ https://en.wikipedia.org/wiki/Knoedler[M. Knoedler & Co. was an art dealership i
 When running this pipeline you will see that provenance records contain ownership transfer to and from M. Knoedler & Co. These correspond to sales and purchases of the art dealership. E.g
 
 [.underline]#*A_purchase*# +
+[source,python]
 ----
 "transferred_title_from": [
     	{    "id":"tag:getty.edu,2019:digital:pipeline:uuid:shared#PERSON,AUTH,Byers%2C%20Alexander%20McBurney",
@@ -21,6 +22,7 @@ When running this pipeline you will see that provenance records contain ownershi
 ]
 ----
 [.underline]#*A_sale_to*# +
+[source,python]
 ----
 "transferred_title_from": [
     	{    "id":"tag:getty.edu,2019:digital:pipeline:uuid:shared#ORGANIZATION,ULAN,500304270",

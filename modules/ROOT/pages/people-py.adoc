@@ -10,6 +10,7 @@ Creates the Bonobo pipeline for transforming people data from CSV to JSON-LD.
     .... currencies : a dict like { '£' : 'gb pounds', 'livres' : 'fr livres' }
     .... materials_map : a dict of frozensets like the following
 +
+[source,python]
 ----
 ('Painting', frozenset(\{''})) : { 
     'classified_as (object type) (primary)': '300033618', 
