@@ -13,6 +13,11 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://spyrosg25.github.io/test_docs">Antora Demo Site</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -93,5 +98,8 @@ If you typed the URL of this page manually, please double check that you entered
 </footer>
 <script src="/test_docs/_/js/site.js"></script>
 <script async src="/test_docs/_/js/vendor/highlight.js"></script>
+<script src="/test_docs/_/js/vendor/lunr.js"></script>
+<script src="/test_docs/_/js/search-ui.js" id="search-ui-script" data-site-root-path="/test_docs" data-snippet-length="100" data-stylesheet="/test_docs/_/css/search.css"></script>
+<script async src="/test_docs/search-index.js"></script>
   </body>
 </html>
