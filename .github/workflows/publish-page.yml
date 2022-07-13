@@ -17,7 +17,7 @@ jobs:
     - name: Generate Site
       run: npx antora antora-playbook.yml
     - name: Copy content
-      run: cp -r build/site/ . 
+      run: cp -r build/site/* . 
     - name: View dir 
       run: ls -la
     - name: Publish to GitHub Pages
