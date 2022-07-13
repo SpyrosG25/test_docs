@@ -16,10 +16,6 @@ jobs:
       run:  npm i antora
     - name: Generate Site
       run: npx antora antora-playbook.yml
-    - name: Copy content
-      run: cp -r build/site/* . 
-    - name: View dir 
-      run: ls -la
     - name: Publish to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
