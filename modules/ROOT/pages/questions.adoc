@@ -9,5 +9,5 @@
     ** MakeLinkedArt* (linkedart.py)
     ** Good practices ? 
 
-image:classes.png[]
-image:initpy.png[]
+image::classes.png[]
+image::initpy.png[]

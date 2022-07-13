@@ -31,7 +31,7 @@
 * Prefixes -> same number , same entry
 * Nest flat dictionary
 * Serializer node
-image:placedata.png[]
+image::placedata.png[]
 * Model parent (crm_vocab.tsv ok to use)
 * Vocab.register_instance (classified_as) (instance unique no ident)
     ** For classification and things that

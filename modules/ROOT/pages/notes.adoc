@@ -29,7 +29,7 @@ What do those services do? (linkedart.py)
 * Cromulent
     ** *CromObjectMerger*
     ** Scenario: +
-    image:unnamed.png[]
+    image::unnamed.png[]
         *** [.small]#Duplicate record#
         *** [.small]#One different attribute#
         *** [.small]#It merges the two records and adds the attribute#
