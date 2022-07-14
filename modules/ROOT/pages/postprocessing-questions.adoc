@@ -74,24 +74,7 @@ rewriting and coalesce_json both use *CromObjectMerger* +
 [disc]
 * GEORGE BRUSEKER
 * Load to dev +
-_ah gotcha_ +
-_so they have set it up in a weird way_ +
-_once you are logged in_ +
-_and assuming you have rights_ +
-_then_ +
-_my typical process_ +
-_is to move the zip packages created to test the tickets from my computer_ +
-_to the dev_ +
-_into this folder:_ +
-_/arches/arches_provenance/data_ +
-_there you will find all the files that have been created to test tickets already_ +
-_keeping them in one spot makes it easy to rerun them_ +
-_Then I ssh into the server_ +
-_I move to the arches provenance directory ( I realize this is unecessary, but I like habits)_ +
-_/arches/arches_provenance_ +
-_and then all the usual commands can be used_ +
-_but they have to be run like this:_ +
-_/usr/bin/arches load_jsonld_ +
-_where 'load_jsonld' is replaced with your desired arches command_ +
-_typically the only thing I do in the server is load the data from the zips using that command_ +
-_and sometimes delete the instances from a model or models_
+
+====
+_Ah gotcha, so they have set it up in a weird way. Once you are logged in and assuming you have rights, then my typical process is to move the zip packages created to test the tickets from my computer to the dev into this folder: /arches/arches_provenance/data. There you will find all the files that have been created to test tickets already. Keeping them in one spot makes it easy to rerun them. Then I ssh into the server, I move to the arches provenance directory (I realize this is unecessary, but I like habits) /arches/arches_provenance and then all the usual commands can be used but they have to be run like this: /usr/bin/arches load_jsonld, where 'load_jsonld' is replaced with your desired arches command. Typically the only thing I do in the server is load the data from the zips using that command and sometimes delete the instances from a model or models._
+====
