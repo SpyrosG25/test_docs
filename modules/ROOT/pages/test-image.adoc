@@ -2,48 +2,8 @@
 
 image::test.jpeg[]
 
+.Title
 ....
 test  
     test
 ....
-
-.Title
-====
-test
-test 
-====
-
-====
-Here's a sample AsciiDoc document:
-
-----
-= Document Title
-Author Name
-
-Content goes here.
-----
-
-The document header is useful, but not required.
-====
-
-
-====
-Here are your options:
-
-.Red Pill
-[%collapsible]
-======
-Escape into the real world.
-======
-
-.Blue Pill
-[%collapsible]
-======
-Live within the `simulated` reality without want or fear.
-======
-====
-
-.Test
-[sidebar]
-test + 
-icon:twitter[role=aqua]
