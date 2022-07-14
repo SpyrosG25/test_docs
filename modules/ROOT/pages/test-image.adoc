@@ -8,4 +8,4 @@ test
     test
 ....
 
-link:pages/bonobo-nodes.adoc[Bonobo nodes]
+xref:bonobo-nodes.adoc[Bonobo nodes]
