@@ -5,7 +5,6 @@
 * xref:people-py.adoc[]
 * xref:test-people-issue.adoc[]
 * xref:knoedler-py.adoc[]
-* xref:notes-zoom-call.adoc[]
 * xref:notes.adoc[]
 * xref:questions.adoc[]
 * xref:meeting-notes.adoc[]
