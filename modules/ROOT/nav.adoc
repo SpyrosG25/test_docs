@@ -10,4 +10,3 @@
 * xref:meeting-notes.adoc[]
 * xref:postprocessing-questions.adoc[]
 * xref:test-image.adoc[]
-** xref:test-nested.adoc[]
