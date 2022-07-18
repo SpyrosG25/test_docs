@@ -2,7 +2,9 @@
 
 .Bonobo
 * xref:bonobo-nodes.adoc[]
-* xref:bonobo-services.adoc[]
+* xref:bonobo-services.adoc[] 
+
+//-
 
 * xref:linkedart-py.adoc[]
 * xref:people-py.adoc[]
