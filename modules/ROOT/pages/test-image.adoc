@@ -4,12 +4,15 @@
 == Image
 image::test.jpeg[]
 
+[#test]
 == Test
 .Title
 ....
 test  
     test
 ....
+
+<<test>>
 
 == Reference
 xref:bonobo-nodes.adoc[Bonobo nodes]
