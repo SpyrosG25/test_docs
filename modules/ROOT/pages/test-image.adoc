@@ -1,11 +1,15 @@
 = Test Image
+:toc: left
 
+== Image
 image::test.jpeg[]
 
+== Test
 .Title
 ....
 test  
     test
 ....
 
+== Reference
 xref:bonobo-nodes.adoc[Bonobo nodes]
