@@ -16,3 +16,6 @@ test
 
 == Reference
 xref:bonobo-nodes.adoc[Bonobo nodes]
+
+{{log "inside partial" this}} +
+{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}  <p>Place: <semantic-link iri='{{place}}'></semantic-link><p>
